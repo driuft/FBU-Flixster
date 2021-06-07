@@ -16,6 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import org.parceler.Parcels;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.CenterInside;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.fbu_flixster.MovieDetailsActivity;
 import com.example.fbu_flixster.R;
 import com.example.fbu_flixster.models.Movie;
@@ -84,6 +89,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 Glide.with(context)
                         .load(imageUrl)
                         .placeholder(R.drawable.flicks_backdrop_placeholder)
+                        .transform(new CenterInside(), new RoundedCorners(24))
                         .into(ivPoster);
             } else {
                 // else imageUrl = posterPath
@@ -92,6 +98,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 Glide.with(context)
                         .load(imageUrl)
                         .placeholder(R.drawable.flicks_movie_placeholder)
+                        .transform(new CenterInside(), new RoundedCorners(24))
                         .into(ivPoster);
             }
         }
